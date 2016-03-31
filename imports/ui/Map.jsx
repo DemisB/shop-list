@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 
 import List from './List.jsx';
@@ -14,10 +15,45 @@ export default class Map extends Component {
         };
     }
 
+    updateDatabase() {
+    
+        let request = {
+            query: 'micromania',
+            bounds: new google.maps.LatLngBounds( 
+                { lat: 42.406056, lng: -4.929832 }, 
+                { lat: 51.719707, lng: 8.256385 } 
+            )
+        };
+        
+        let service = new google.maps.places.PlacesService( this.map );
+        
+        const theComponent = this;
+        service.textSearch( request, processResults );
+        
+        function processResults( results, status, pagination, component = theComponent ) {
+            
+            if( status == google.maps.places.PlacesServiceStatus.OK ) {
+                for( var i = 0; i < results.length; i++ ) {
+                    
+                    Meteor.call( 'addShop', 
+                        results[ i ].place_id,
+                        results[ i ].name,
+                        results[ i ].formatted_address,
+                        JSON.stringify( results[ i ].geometry.location.toJSON() ) 
+                    );
+                }
+                if( pagination.hasNextPage ) {
+                
+                    pagination.nextPage();
+                }
+            }
+        }
+    }
+    
     createMarker( id, coords, title ) {
 
         this.markers[ id ] = new google.maps.Marker( {
-            position: coords,
+            position: JSON.parse( coords ),
             map: this.map,
             title: title
         } );
@@ -83,8 +119,9 @@ export default class Map extends Component {
     render() {
 
         return (
-            <div>
-                <div ref="googleMap" className="google-map-container">Je suis la carte et Dora se drogue</div>
+            <div className="map-list-container">
+                <button className="dl-button" onClick={this.updateDatabase.bind( this )}>Update database</button>
+                <div ref="googleMap" className="google-map-container" />
                 <List shops={this.props.shops} />
             </div>
         );

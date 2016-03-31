@@ -27,7 +27,7 @@ export default class List extends Component {
     
             if( shop.clicked == true ) {
                 
-                csvData = csvData + shop.name + ', ' + shop.address + ', ' + shop.phone + '\n';
+                csvData = csvData + shop.name + ', ' + shop.address + '\n';
             }
         } );
         
@@ -39,9 +39,11 @@ export default class List extends Component {
     
         return (
             <div className="list-container">
-                <ul>
-                   {this.renderList()}
-                </ul>
+                <div className="ul-container">
+                    <ul>
+                        {this.renderList()}
+                    </ul>
+                </div>
                 <button className="dl-button" onClick={this.downloadList.bind( this )}>Download list</button>
             </div>
         );

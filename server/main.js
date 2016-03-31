@@ -26,7 +26,8 @@ Meteor.methods( {
             return;
         } );
         return;
-    }
+    }    
+    
 } );
 
 Router.route( '/get_file/:name', function() {

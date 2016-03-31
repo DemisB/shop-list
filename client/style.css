@@ -205,26 +205,31 @@ header .hide-completed {
   margin-left: 5px;
 }
 
-.caca {
-    box-sizing: border-box;
+.map-list-container {
     width: 100%;
-    min-height: 100px;
-    margin: 0;
+    height: 700px;
 }
 
-
-
 .google-map-container {
+    margin-right: 10px;
     float: right;
-    width: 60%;
-    height: 500px;
-    background: #AA6666;
+    width: 55%;
+    height: 100%;
+    background: transparent;
 }
 
 .list-container {
+    padding: 10px;
     float: left;
     width: 40%;
-    background: #6666AA;
+    height: 100%;
+    background: transparent;
+}
+
+.ul-container {
+    float: left;
+    height: 90%;
+    overflow: auto;
 }
 
 li.selected {
@@ -234,11 +239,13 @@ li.selected {
 
 
 .dl-button {
+    margin-top: 5px;
+    margin-bottom: 5px;
     display: block;
     padding: 10px 0px;
     border: none;
     background: #315481;
-    border-radius: 15px;
+/*     border-radius: 15px; */
     width: 100%;
     font-size: 1em;
     color: #FFFFFF;
