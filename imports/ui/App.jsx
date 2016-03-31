@@ -11,8 +11,12 @@ class App extends Component {
     render() {
 
         return (
-
-            <Map shops={this.props.shops} />
+            <div>
+                <header>
+                    <h1>Les magasins Micromania</h1>
+                </header>
+                <Map shops={this.props.shops} />
+            </div>
         );
     }
 }
