@@ -227,6 +227,29 @@ header .hide-completed {
     background: #6666AA;
 }
 
+li.selected {
+  background: #eee;
+  border-color: #ddd;
+}
+
+
+.dl-button {
+    display: block;
+    padding: 10px 0px;
+    border: none;
+    background: #315481;
+    border-radius: 15px;
+    width: 100%;
+    font-size: 1em;
+    color: #FFFFFF;
+}
+
+.textbox {
+    width: 100%;
+    height: 60px;
+}
+
+
 @media (max-width: 600px) {
   li {
     padding: 12px 15px;

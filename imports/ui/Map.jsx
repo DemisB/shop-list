@@ -3,6 +3,16 @@ import React, { Component } from 'react';
 import List from './List.jsx';
 
 export default class Map extends Component {
+  
+    constructor( props ) {
+
+        super( props );
+        
+        this.state = {
+
+            clickedMarkers: []
+        };
+    }
 
     createMarker( id, coords, title ) {
 
@@ -11,20 +21,42 @@ export default class Map extends Component {
             map: this.map,
             title: title
         } );
-        /*
-        //this.markers[ i ].addListener( 'click', this.clickedMarker );
+        
         
         const theComponent = this;
-        this.markers[ i ].addListener( 
+        this.markers[ id ].addListener( 
             'click', 
             function( marker, component = theComponent ) {
         
-                component.clickedMarker( i );
+                component.clickedMarker( id );
             } 
         );
-        */
     }
 
+    clickedMarker( i ) {
+    
+        let newArray = [];
+        if( this.state.clickedMarkers.indexOf( i ) < 0 ) {
+        
+            newArray = this.state.clickedMarkers.concat( [ i ] );
+            this.markers[ i ].setAnimation( google.maps.Animation.BOUNCE );
+            this.props.shops[ i ].clicked = true;
+        } else {
+        
+            newArray = this.state.clickedMarkers.filter( function( markerNb ) {
+                
+                return markerNb != i;
+            } );
+            this.markers[ i ].setAnimation( null );
+            this.props.shops[ i ].clicked = false;
+        }
+        
+        this.setState( {
+        
+            clickedMarkers: newArray
+        } );
+    }
+    
     componentDidMount() {
 
         const mapProp = {
