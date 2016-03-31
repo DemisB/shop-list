@@ -1,0 +1,243 @@
+/* CSS declarations go here */
+* {
+    box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #315481;
+  background-image: linear-gradient(to bottom, #315481, #918e82 100%);
+  background-attachment: fixed;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  padding: 0;
+  margin: 0;
+
+  font-size: 14px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100%;
+  background: white;
+}
+
+header {
+  background: #d2edf4;
+  background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+  padding: 20px 15px 15px 15px;
+  position: relative;
+}
+
+#login-buttons {
+  display: block;
+}
+
+button, input[type='submit'] {
+    cursor: pointer;
+}
+
+h1 {
+  font-size: 1.5em;
+  margin: 0;
+  margin-bottom: 10px;
+  display: inline-block;
+  margin-right: 1em;
+}
+
+form {
+  margin-top: 10px;
+  margin-bottom: -10px;
+  position: relative;
+}
+
+.new-task input[type='text'] {
+  box-sizing: border-box;
+  padding: 10px 0;
+  background: transparent;
+  border: none;
+  width: 80%;
+  padding-right: 80px;
+  font-size: 1em;
+}
+
+.new-task input[type='text']:focus{
+  outline: 0;
+}
+
+.new-task input[type='submit'] {
+  box-sizing: border-box;
+  padding: 10px 0px;
+  border: none;
+  background: #315481;
+  border-radius: 15px;
+  width: 19%;
+  font-size: 1em;
+  color: #FFFFFF;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  background: white;
+}
+
+.delete {
+  float: right;
+  font-weight: bold;
+  background: none;
+  font-size: 16px;
+  border: none;
+  position: relative;
+  color: #000000;
+}
+
+.edit {
+  float: right;
+  font-weight: bold;
+  background: none;
+  font-size: 1em;
+  border: none;
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+}
+
+button.edit img {
+    width: 16px;
+    vertical-align: middle;
+    margin: 0px;
+    padding: 0px;
+}
+
+.edit-box::after {
+    content: '';
+    position: absolute;
+    bottom: 100%; /* At the top of the tooltip */
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+    z-index: 2;
+} 
+
+.edit-box {
+    box-sizing: border-box;
+    display: none;
+    width: 90%;
+    z-index: 1;
+    position: absolute;
+    top: 90%;
+    left: 5%;
+    background: #d2edf4;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.close-button {
+    position: absolute;
+    right: 6px;
+    top: 6px;
+}
+
+.close-button:hover {
+    cursor: pointer;
+}
+
+.date-created {
+    float: right;
+    color: #555;
+    position: relative;
+}
+
+
+
+li {
+  position: relative;
+  list-style: none;
+  padding: 15px;
+  border-bottom: #eee solid 1px;
+}
+
+li .text {
+  margin-left: 10px;
+}
+
+li.checked {
+  color: #888;
+}
+
+li.checked .text {
+  text-decoration: line-through;
+}
+
+li.private {
+  background: #eee;
+  border-color: #ddd;
+  font-style: italic;
+}
+
+li.high-priority {
+  background: #ff4d4d;
+}
+
+li.medium-priority {
+  background: #ffae1a;
+}
+
+li.low-priority {
+  background: #00cc00;
+}
+
+header .hide-completed {
+  float: right;
+}
+
+.toggle-private {
+  margin-left: 5px;
+}
+
+.caca {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100px;
+    margin: 0;
+}
+
+
+
+.google-map-container {
+    float: right;
+    width: 60%;
+    height: 500px;
+    background: #AA6666;
+}
+
+.list-container {
+    float: left;
+    width: 40%;
+    background: #6666AA;
+}
+
+@media (max-width: 600px) {
+  li {
+    padding: 12px 15px;
+  }
+
+  .search {
+    width: 150px;
+    clear: both;
+  }
+
+  .new-task input {
+    padding-bottom: 5px;
+  }
+}
