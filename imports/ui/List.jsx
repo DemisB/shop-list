@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 
 import ListItem from './ListItem.jsx';
@@ -26,13 +27,12 @@ export default class List extends Component {
     
             if( shop.clicked == true ) {
                 
-                //console.log( shop.name + ', ' + shop.address + ', ' + shop.phone );
-                //console.log( csvData );
                 csvData = csvData + shop.name + ', ' + shop.address + ', ' + shop.phone + '\n';
             }
         } );
-        console.log( csvData );
-        this.refs.csvDataBox.value = csvData;
+        
+        Meteor.call( 'writeFile', 'micromania.csv', csvData );
+        Router.go( '/get_file/micromania.csv' );
     }
 
     render() {
@@ -43,7 +43,6 @@ export default class List extends Component {
                    {this.renderList()}
                 </ul>
                 <button className="dl-button" onClick={this.downloadList.bind( this )}>Download list</button>
-                <textarea className="textbox"  ref="csvDataBox" />
             </div>
         );
     }
